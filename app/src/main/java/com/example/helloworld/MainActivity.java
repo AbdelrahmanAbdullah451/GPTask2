@@ -6,12 +6,15 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
+    public boolean flag = false;
     private TextView xAccTxt , yAccTxt , zAccTxt , xGyroTxt , yGyroTxt , zGyroTxt ;
     private Sensor accelerometerSensor , gyroscopeSensor;
     private SensorManager SM;
@@ -19,6 +22,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button sBtn = findViewById(R.id.startBtn);
+        Button endBtn = findViewById(R.id.stopBtn);
+
 
         // Create out sensor maneger
         SM = (SensorManager)getSystemService(SENSOR_SERVICE);
@@ -49,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent sensorEvent) {
         Sensor sensor = sensorEvent.sensor;
 
+        while(flag){
+            // start writing into file
+        }
+
         if(sensor.getType() == Sensor.TYPE_ACCELEROMETER){
             xAccTxt.setText("X : " + sensorEvent.values[0]);
             yAccTxt.setText("Z : " + sensorEvent.values[1]);
@@ -59,11 +70,21 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             zGyroTxt.setText("Z : " + sensorEvent.values[2]);
         }
 
-
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
         // not in use
+    }
+
+    public void startRecording(View view) {
+        // clean the file
+        flag = true;
+        //
+    }
+
+    public void stopRecording(View view) {
+        flag = false ;
+        // send the data to backend
     }
 }

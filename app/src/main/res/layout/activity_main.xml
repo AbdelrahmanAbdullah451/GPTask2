@@ -73,4 +73,29 @@
         app:layout_constraintStart_toEndOf="@+id/yGyro"
         app:layout_constraintTop_toBottomOf="@+id/zAcc"
         app:layout_constraintVertical_bias="0.453" />
+
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yGyro"
+        app:layout_constraintVertical_bias="0.0"
+        android:onClick="startRecording"/>
+
+    <Button
+        android:id="@+id/stopBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startBtn"
+        android:onClick="stopRecording"/>
 </android.support.constraint.ConstraintLayout>
